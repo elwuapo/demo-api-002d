@@ -13,6 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from api.login.LoginAPI import LoginAPI, LogoutAPI
 from api.cuenta.CuentaAPI import CuentaAPI
 from api.usuario.UsuarioAPI import UsuarioAPI
 from api.fabricante.FabricanteAPI import FabricanteAPI
@@ -35,6 +36,10 @@ urlpatterns = [
 
     # CUENTA
     path('api/v1/cuenta/select/<int:id>/', CuentaAPI.as_view(), name='CuentaAPI'), # URL GET
+
+    # Login
+    path('api/v1/login/', LoginAPI.as_view(), name='LoginAPI'), #URL POST
+    path('api/v1/logout/', LogoutAPI.as_view(), name='LogoutAPI'), #URL POST
 ]
 
 urlpatterns + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

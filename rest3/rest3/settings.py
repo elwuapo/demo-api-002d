@@ -38,10 +38,19 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'api',
-    'rest_framework',
-    'corsheaders',
+    'api',                      # APP DJANGO
+    'rest_framework',           # LIBRERIA PARA LA CONTRUCCION DE UNA API REST PARA DJANGO
+    'corsheaders',              # LIBRERIA PARA LA CONFIGURACION DE LOS CORS PARA NO TENER POBLEMAS CON LOS NAVEGADORES WEB.
+    'rest_framework.authtoken', # AGREGAMOS ESTA LIBRERIA PARA PODER USAR LA AUTENTICACION MEDIANTE TOKEN.
 ]
+
+
+# AUTHTOKEN NECESITA ESTA VARIABLE PARA DAR LA AUTORIZACION PARA LA VISUALIZACION MEDIANTE TOKEN.
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -52,9 +61,10 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
-    'corsheaders.middleware.CorsMiddleware'
+    'corsheaders.middleware.CorsMiddleware' # AGREGAMOS ESTA LINEA PARA CONFIGURAR CORS.
 ]
 
+# LAS SIGUENTES 3 VARIABLES SON PARA LA LIBRERIA DE CORS.
 CORS_ALLOW_METHODS = [
     'DELETE',
     'GET',
